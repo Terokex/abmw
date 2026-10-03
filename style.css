@@ -1,0 +1,349 @@
+/* ==========================
+   RESET
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+    scrollbar-gutter: stable;
+    scrollbar-width: none;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    color:#111;
+    min-height:100vh;
+
+    background:
+        linear-gradient(
+            rgba(255,255,255,0.15),
+            rgba(255,255,255,0.15)
+        ),
+        url("./concrete.jpg");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    
+}
+
+
+/* ==========================
+   CONTAINER
+========================== */
+
+
+/* ==========================
+   HERO
+========================== */
+
+.hero{
+    display:flex;
+    align-items:center;
+    flex-direction: column;
+    text-align: left;
+    height: 100vh;
+    width: 100%;
+}
+.heroText{
+    /* background: rgba(255, 0, 0, 0.315); */
+    height: fit-content;
+    width: fit-content;
+    justify-content: center;
+    margin-left: 35%;
+    margin-top: 25vh;
+}
+.hero-right{
+    /* text-align:right; */
+    align-self: self-start;
+}
+.hero-top{
+    margin-left: 2rem; 
+    font-size: 2rem;
+    font-weight: 600;
+
+}
+.hero-bottom {
+    font-size: 4rem;
+    line-height: 180%;
+}
+
+
+.heroBackground{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -2;
+    left: 0;
+    top: 0;
+}
+.heroBackgroundImage {
+    width: 100%;
+    height: 100%;
+    object-fit:fill;
+}
+.heroCircles {
+    position: absolute;
+    display: flex;
+
+    top: 0;
+    left: -33vw;
+    width: 10vh;
+    height: 10vh;
+}
+.heroCircle{
+    width: 100vh;
+    height: 100vh;
+    border: black solid 5px;
+    border-radius: 100%;
+}
+/* ==========================
+   INTRO
+========================== */
+
+.intro{
+    height: 150vh;
+}
+.introHeader {
+    height: 40vh;
+    margin-top: 5rem;
+    margin-left: 2rem
+}
+/* .introSmallHeader {
+
+} */
+.introLargeHeader {
+    margin-top: 0.5rem;
+    font-size: 3rem;
+    font-weight: 600;
+}
+.introCircles {
+    display: flex;
+}
+.introCircle {
+    width: 7rem;
+    height: 7rem;
+    border: black solid 0.15rem;
+    border-radius: 100%;
+    margin: 1.5rem;
+}
+.introSmallTextBlocks {
+    display: flex;
+    justify-self: end;
+    width: 60%;
+    max-height: 65vh;
+    justify-content: space-between;
+    font-size: 1.2rem;
+}
+.introSmallBlock {
+    margin-right: 5rem;
+}
+.introbigTextBlock {
+    display: flex;
+    justify-self: end;
+    max-height: 45vh;
+    width: 60%;
+    margin-top: 10vh;
+    padding-right: 5rem;
+    font-size: 3rem;
+    font-weight: 550;
+
+}
+/* .works h2{
+    font-size:64px;
+    font-weight:300;
+    margin-bottom:50px;
+}
+
+.works-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:60px;
+}
+
+.text-block p{
+    font-size:20px;
+    line-height:1.7;
+} */
+ /* ==========================
+   WORKS
+========================== */
+
+.works {
+    margin-top: 5rem;
+    height: 250vh;
+    background-color: #3d3735;
+}
+.worksbgGrid {
+    z-index: -1;
+    width: 100%;
+    height: 0;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 40vh 189vh 20vh;
+}
+.worksbgCell {
+    border-right: rgba(255, 255, 255, 0.4) solid 0.12rem;
+    border-bottom: rgba(255, 255, 255, 0.4) solid 0.12rem
+}
+/* .worksContent {
+
+} */
+.worksHeader {
+    display: flex;
+    justify-self: center;
+    justify-items: self-end;
+    flex-direction: column;
+    margin-top: 27vh;
+    color: rgb(224, 222, 213);
+}
+.worksSmallHeader {
+    margin-bottom: 1rem;
+}
+.worksLargeHeader {
+    font-size: 4rem;
+    font-weight: lighter;
+}
+.worksPretextContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin-top: 6rem;
+    margin-left: 1.5rem;
+    color: rgb(224, 222, 213);
+    font-size: 1.1rem;
+}
+.worksText {
+    width: 45%;
+}
+.worksGalleryGrid {
+    height: 150vh;
+    display: grid;
+    margin-top: 10rem;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 45vh 45vh 45vh;
+}
+.worksGalleryCell {
+    display: flex;
+    /* border: white solid 0.1rem; */
+    padding: 1rem;
+    scale: 1;
+    transition: 250ms;
+}
+.worksGalleryTextCell {
+    display: flex;
+    /* border: white solid 0.1rem; */
+    padding: 1rem;
+    scale: 1;
+}
+.worksGalleryCell:hover{
+    transition: 250ms;
+    scale: 1.05;
+}
+.placeholderimage {
+    background-color: #c4c4c4;
+    width: 100%;
+    height: 100%;
+}
+.galleryText {
+    color: azure;
+    justify-self: flex-start;
+    align-self: end;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* ==========================
+   HELP
+========================== */
+
+.help {
+    height: 120vh;
+    background-color: #3d3735;
+}
+.helpHeader {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20vh;
+    padding-left: 1.5rem;
+    padding-bottom: 12vh;
+    color: white;
+}
+.helpHeaderSmall {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: rgb(214, 214, 209);
+}
+.helpHeaderLarge {
+    font-size: 3.5rem;
+    font-weight: bold;
+}
+.helpInfoGrid {
+    padding: 1.5rem;
+    display: grid;
+    height: 50vh;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+/* .helpInfoCell {
+    border: white solid 1px
+} */
+.helpTextCell {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    padding-left: 1rem;
+    padding-right: 1.5rem;
+    color: white;
+
+}
+.helpTextCellHeader {
+    min-height: 15vh;
+    font-size: 3rem;
+    font-weight: bold;
+}
+.helpTextCellParagraph {
+    height: 100%;
+    align-content: end;
+    font-size: 1.2rem;
+}
+
+/* ==========================
+   CONTACTS
+========================== */
+
+.contacts {
+    background-color: #3d3735;
+    padding-top: 30vh;
+    height: 80vh;
+}
+.contactsHeader {
+    color: white;
+    font-size: 3rem;
+    font-weight: bold;
+    padding-left: 1.5rem;
+}
+.contactsGridContainer {
+    width: 60%;
+    height: 40vh;
+    margin-left: 40%;
+    /* background-color: red; */
+}
+.contactsGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+}
+.contactsGridCell {
+    padding: 1rem;
+    /* border: white solid 1px; */
+    color: white;
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 1.4rem;
+}
