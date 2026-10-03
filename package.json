@@ -1,0 +1,20 @@
+{
+  "name": "abmw",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/Terokex/abmw#readme",
+  "bugs": {
+    "url": "https://github.com/Terokex/abmw/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Terokex/abmw.git"
+  },
+  "license": "MIT",
+  "author": "",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
