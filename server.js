@@ -2,31 +2,41 @@
 import { createServer } from 'node:http';
 import { readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
-import { dirname, join } from 'node:path';
+import { dirname, join, extname } from 'node:path';
 
-// Get the current directory path in ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const server = createServer(async (req, res) => {
-  try {
-    // Build the path to index.html in the same folder
-    const filePath = join(__dirname, 'index.html');
-    
-    // Read the HTML file
-    const data = await readFile(filePath);
+// Helper to map file extensions to correct Content-Types
+const getContentType = (ext) => {
+  switch (ext) {
+    case '.html': return 'text/html';
+    case '.css': return 'text/css';
+    case '.js': return 'application/javascript';
+    case '.png': return 'image/png';
+    case '.jpg': return 'image/jpeg';
+    default: return 'text/plain';
+  }
+};
 
-    // Send a 200 OK response with HTML content type
-    res.writeHead(200, { 'Content-Type': 'text/html' });
+const server = createServer(async (req, res) => {
+  // If the user visits root '/', default to 'index.html'
+  let safePath = req.url === '/' ? '/index.html' : req.url;
+  
+  // Prevent path traversal tricks
+  const filePath = join(__dirname, safePath);
+  const ext = extname(filePath);
+
+  try {
+    const data = await readFile(filePath);
+    res.writeHead(200, { 'Content-Type': getContentype(ext) });
     res.end(data);
   } catch (err) {
-    // If index.html is missing, return a 404 error
     res.writeHead(404, { 'Content-Type': 'text/plain' });
-    res.end('404 Not Found: index.html is missing');
+    res.end('404 Not Found');
   }
 });
 
-// starts a simple http server locally on port 3003
 server.listen(3003, '0.0.0.0', () => {
   console.log('Listening on http://0.0.0.0:3003');
 });
