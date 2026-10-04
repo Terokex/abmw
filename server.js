@@ -3,8 +3,8 @@ import { createServer } from 'node:http';
 
 const server = createServer(async (req, res) => {
   try {
-    
-  const filePath = join('index.html');
+
+  const filePath ='index.html';
   const data = await readFile(filePath);
 
   res.writeHead(200, { 'Content-Type': 'text/html' });
