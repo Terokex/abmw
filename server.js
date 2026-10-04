@@ -7,29 +7,23 @@ import { dirname, join, extname } from 'node:path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-// Helper to map file extensions to correct Content-Types
-const getContentType = (ext) => {
-  switch (ext) {
-    case '.html': return 'text/html';
-    case '.css': return 'text/css';
-    case '.js': return 'application/javascript';
-    case '.png': return 'image/png';
-    case '.jpg': return 'image/jpeg';
-    default: return 'text/plain';
-  }
-};
-
 const server = createServer(async (req, res) => {
-  // If the user visits root '/', default to 'index.html'
-  let safePath = req.url === '/' ? '/index.html' : req.url;
-  
-  // Prevent path traversal tricks
-  const filePath = join(__dirname, safePath);
-  const ext = extname(filePath);
+  let fileName = req.url === '/' ? 'index.html' : req.url;
+
+  // If the browser asks for ANY css file, force it to serve style.css from the folder
+  if (extname(fileName) === '.css') {
+    fileName = 'style.css';
+  }
+
+  const filePath = join(__dirname, fileName);
 
   try {
     const data = await readFile(filePath);
-    res.writeHead(200, { 'Content-Type': getContentype(ext) });
+    
+    // Determine the content type
+    const contentType = extname(filePath) === '.css' ? 'text/css' : 'text/html';
+
+    res.writeHead(200, { 'Content-Type': contentType });
     res.end(data);
   } catch (err) {
     res.writeHead(404, { 'Content-Type': 'text/plain' });
